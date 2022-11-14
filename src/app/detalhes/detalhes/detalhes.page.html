@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>detalhes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div id="mostrar" *ngIf="!modoEdicao">
+
+    <div class="top">
+      <h1>Detalhes</h1>
+    </div>
+
+    <!-- Aqui ele lista as informações do id selecionado e passa na tela -->
+
+    <ion-item >
+      <ion-label>Nome:</ion-label>
+      <p>{{produto.nome}}</p>
+    </ion-item>
+
+    <ion-item >
+      <ion-label>valor:</ion-label>
+      <p>{{produto.valor}}</p>
+    </ion-item>
+
+    <ion-item >
+      <ion-label>quantidade:</ion-label>
+      <p>{{produto.quantidade}}</p>
+    </ion-item>
+
+  </div>
+
+  <div id="botao" *ngIf="!modoEdicao">
+
+    <!-- botão q passa o modo de edição e troca as info da tela -->
+    <ion-button class="but" (click)="IniciarEdicao()"> Movimentar</ion-button> <br>
+
+  </div>
+
+  <div id="movimentacao" *ngIf="modoEdicao">
+    <div class="top">
+      <h1>Movimentação</h1>
+    </div>
+
+    <form #form="ngForm" (ngSubmit)="EncerrarEdicao()" [formGroup]="produtoForm">
+
+      <ion-item class="null">
+        <ion-label position="floating"> Nome:</ion-label>
+        <ion-input [(ngModel)]="produto.nome" formControlName="nome"></ion-input>
+      </ion-item>
+
+
+      <ion-item id="part2" class="null">
+        <ion-label position="floating"> Valor de venda:</ion-label>
+        <ion-input [(ngModel)]="produto.valor" formControlName="valor" ></ion-input>
+      </ion-item>
+
+      <ion-item >
+        <ion-label position="floating">Quantidade:</ion-label>
+        <ion-input [(ngModel)]="produto.quantidade" formControlName="quantidade" type="number" [clearInput]="true"></ion-input>
+      </ion-item>
+
+      <ion-button type="submit" class="but"> Confirmar </ion-button>
+    </form>
+    <ion-fab vertical="center" horizontal="end" slot="fixed" edge="true">
+      <ion-fab-button color="danger" (click)="ExcluirProduto()" routerLink="/contatos-listagem/">
+        <ion-icon name="trash"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+
+
+
+
+</ion-content>

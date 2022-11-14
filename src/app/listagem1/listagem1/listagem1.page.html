@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>listagem1</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let arrayProduto of arrayProduto" lines="nome" routerLink="/detalhes/{{arrayProduto.id.value}}">
+    <ion-label>
+    Nome:  {{arrayProduto.nome}}<br>
+    Quantidade:  {{arrayProduto.quantidade}}<br>
+    Valor:  {{arrayProduto.valor}}<br><br>
+      </ion-label>
+    </ion-item>
+</ion-content>
